@@ -7,7 +7,7 @@ import WelcomeScreen from "../screens/WelcomeScreen";
 import SearchScreen from "../screens/SearchScreen";
 import SavedScreen from "../screens/SavedScreen";
 import HomeScreen from "../screens/HomeScreen";
-
+import { Ionicons } from "@expo/vector-icons";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -16,7 +16,7 @@ export default function AppNavigation() {
     return (
       <Stack.Navigator 
       screenOptions={{headerShown:false}} 
-      initialRouteName="Welcome">
+      initialRouteName="Home">
         <Stack.Screen name="HomeTab" component={HomeTabs} />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
       </Stack.Navigator>
@@ -25,7 +25,38 @@ export default function AppNavigation() {
 
   function HomeTabs(){
     return (
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          headerShown: false,
+          tabBarIcon: ({ focused }) => {
+            let iconName;
+
+            if (route.name === "Home") {
+              iconName = "home";
+            } else if (route.name === "Search") {
+              iconName = "search";
+            } else if (route.name === "Saved") {
+              iconName = "heart";
+            }
+
+            const customizeSize = 30;
+
+            return (
+              <Ionicons
+                name={iconName}
+                size={customizeSize}
+                color={focused ? "white" : "gray"}
+              />
+            );
+          },
+          tabBarActiveTintColor: "white",
+          tabBarStyle: {
+            backgroundColor: "#1F1D2B",
+            borderTopWidth: 0,
+            paddingBottom: 10,
+          },
+        })}
+      >
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Search" component={SearchScreen} />
         <Tab.Screen name="Saved" component={SavedScreen} />
