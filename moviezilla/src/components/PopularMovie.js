@@ -12,6 +12,8 @@ import { image500 } from "../../utils/moviesapi";
 
 const { width, height } = Dimensions.get("window");
 
+//Popular Movies
+
 export default function PopularMovie({ title, data }) {
   const navigation = useNavigation();
 

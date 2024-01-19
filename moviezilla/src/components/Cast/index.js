@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
 import React from "react";
 import { image500 } from "../../../utils/moviesapi";
 
+//Display of the Cast of Movie
 export default function Cast({ cast, navigation }) {
   const renderItem = ({ item }) => {
     return (

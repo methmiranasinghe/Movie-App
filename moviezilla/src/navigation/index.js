@@ -14,6 +14,8 @@ import MovieScreen from "../screens/MovieScreen";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+
+//Navigation 
 export default function AppNavigation() {
   function HomeStack() {
     return (
